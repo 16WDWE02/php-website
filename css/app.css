@@ -1,0 +1,63 @@
+body#intro {
+  background: url('../img/intro-bg.jpg');
+  background-position: bottom;
+  background-size: cover;
+}
+
+#hello {
+  height: 100vh;
+}
+
+#hello > div {
+  background: url('../img/hello-bg.jpg') center;
+  color: #fff;
+  padding: 2em;
+  position: relative;
+  box-shadow: 0 0 10px 0 rgba(22, 22, 22, .8);
+}
+
+#hello > div h1,
+#hello > div p {
+  text-shadow: 0 1px 4px #333333;
+}
+
+#hello > div h1 {
+  font-size: 2em;
+}
+
+#facebook-login {
+  background-color: rgb(41,83,173);
+}
+
+#google-login {
+  background-color: #ef6666;
+}
+
+#hello-login {
+  position: absolute;
+  top: 1em;
+  right: 1em;
+}
+
+#hello-logo {
+  margin-top: -6em;
+  border-radius: 50%;
+  border: 4px solid #fff
+}
+
+body#login-page {
+  background-color: #ddd
+}
+
+#login-container {
+  height: 100vh;
+}
+
+#login-container > div {
+    background-color: #fff;
+    padding: 2em;
+}
+
+#login-container h1 {
+  font-size: 2em;
+}
