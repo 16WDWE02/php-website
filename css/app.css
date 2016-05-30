@@ -40,9 +40,10 @@ body#intro {
 }
 
 #hello-logo {
-  margin-top: -6em;
-  border-radius: 50%;
-  border: 4px solid #fff
+
+  font-size: 4em;
+  width: 64px;
+  height: 64px;
 }
 
 body#login-page {
@@ -60,4 +61,16 @@ body#login-page {
 
 #login-container h1 {
   font-size: 2em;
+}
+
+#grid > div {
+  background-color: rgba(0,0,255,.5);
+  display: inline-block;
+  column-break-inside: avoid;
+  margin: 1em;
+}
+
+#grid {
+  column-width: 200px;
+	column-gap: 1em;
 }
