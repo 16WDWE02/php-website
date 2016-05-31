@@ -63,14 +63,59 @@ body#login-page {
   font-size: 2em;
 }
 
-#grid > div {
-  background-color: rgba(0,0,255,.5);
-  display: inline-block;
-  column-break-inside: avoid;
-  margin: 1em;
-}
 
 #grid {
   column-width: 200px;
 	column-gap: 1em;
+}
+
+.grid-item {
+  position: relative;
+  background-color: #fff;
+  display: inline-block;
+  column-break-inside: avoid;
+  margin: 1em;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 3px 5px 0 rgba(22,22,22,.2)
+}
+
+.save,
+.heart {
+  position: absolute;
+  top: .5em;
+  display: none;
+}
+
+.save {
+  left: .5em;
+}
+
+.heart {
+  right: .5em;
+}
+
+.grid-item:hover .save,
+.grid-item:hover .heart {
+  display: block
+}
+
+.grid-content {
+  padding: .5em;
+}
+
+.grid-content h1 {
+  font-size: 1rem;
+}
+
+.grid-content a {
+  color: #333;
+}
+
+.grid-content .media-object a:first-child {
+  font-weight: bold;
+}
+
+#stream-page {
+  background-color: #eee;
 }
