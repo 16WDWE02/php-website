@@ -1,4 +1,11 @@
-<?php $this->layout('master') ?>
+<?php
+
+  $this->layout('master', [
+    'title'=>'Welcome to Pinterest',
+    'desc'=>'Sign up and get inspired with designs'
+  ]);
+
+?>
 
 <body id="intro">
   <div class="row align-center text-center" id="hello">
