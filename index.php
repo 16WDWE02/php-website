@@ -4,16 +4,16 @@
 // available to use
 require 'vendor/autoload.php';
 
-
-
 // Has the user requested a page?
-if( isset($_GET['page']) ) {
-	// Requested page
-	$page = $_GET['page'];
-} else {
-	// Home page
-	$page = 'landing';
-}
+// if( isset($_GET['page']) ) {
+// 	// Requested page
+// 	$page = $_GET['page'];
+// } else {
+// 	// Home page
+// 	$page = 'landing';
+// }
+
+$page = isset($_GET['page']) ? $_GET['page'] : 'landing';
 
 // Load the appropriate files based on page
 switch($page) {
