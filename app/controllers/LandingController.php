@@ -1,11 +1,10 @@
 <?php
 
-class LandingController {
+class LandingController extends PageController {
 
 	// Properties (attributes)
 	private $emailMessage;
 	private $passwordMessage;
-	private $dbc;
 
 	// Constructor
 	public function __construct($dbc) {
