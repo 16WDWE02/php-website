@@ -5,9 +5,13 @@ class LandingController {
 	// Properties (attributes)
 	private $emailMessage;
 	private $passwordMessage;
+	private $dbc;
 
 	// Constructor
-	public function __construct() {
+	public function __construct($dbc) {
+
+		// Save the database connection for later
+		$this->dbc = $dbc;
 
 		// If the user has submitted the registration form
 		if( isset($_POST['new-account']) ) {
@@ -69,6 +73,23 @@ class LandingController {
 			$totalErrors++;
 		}
 
+		// Make sure the E-Mail is not in use
+		$filteredEmail = $this->dbc->real_escape_string( $_POST['email'] );
+
+		$sql = "SELECT email
+				FROM users
+				WHERE email = '$filteredEmail'  ";
+
+		// Run the query
+		$result = $this->dbc->query($sql);
+
+		// If the query failed OR there is a result
+		if( !$result || $result->num_rows > 0 ) {
+			$this->emailMessage = 'E-Mail in use';
+			$totalErrors++;
+		}
+
+
 		// If the password is less than 8 characters long
 		if( strlen($_POST['password']) < 8 ) {
 			// Password is too short
@@ -81,6 +102,27 @@ class LandingController {
 
 			// Validation passed! :D
 			
+			// Filter user data before using it in a query
+			
+
+			// Hash the password
+			$hash = password_hash( $_POST['password'], PASSWORD_BCRYPT );
+
+			// Prepare the SQL
+			$sql = "INSERT INTO users (email, password)
+					VALUES ('$filteredEmail', '$hash')";
+
+			// Run the query
+			$this->dbc->query($sql);
+
+			// Check to make sure this worked
+
+
+			// Log the user in
+			$_SESSION['id'] = $this->dbc->insert_id;
+
+			// Redirect the user to their stream page
+			header('Location: index.php?page=stream');
 
 		}
 
