@@ -13,11 +13,7 @@ class StreamController extends PageController {
 
 		$this->dbc = $dbc;
 
-		// If you are not logged in
-		if( !isset($_SESSION['id']) ) {
-			// Redirect the user to the login page
-			header('Location: index.php?page=login');
-		}
+		$this->mustBeLoggedIn();
 	}
 
 	// Methods (functions)

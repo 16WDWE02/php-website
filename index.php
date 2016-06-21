@@ -52,6 +52,11 @@ switch($page) {
 		$controller = new StreamController($dbc);
 	break;
 
+	case 'account':
+		require 'app/controllers/AccountController.php';
+		$controller = new AccountController($dbc);
+	break;
+
 	default:
 		echo $plates->render('error404');
 	break;
