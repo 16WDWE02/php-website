@@ -8,14 +8,6 @@ require 'vendor/autoload.php';
 require 'app/controllers/PageController.php';
 
 // Has the user requested a page?
-// if( isset($_GET['page']) ) {
-// 	// Requested page
-// 	$page = $_GET['page'];
-// } else {
-// 	// Home page
-// 	$page = 'landing';
-// }
-
 $page = isset($_GET['page']) ? $_GET['page'] : 'landing';
 
 // Connect to the database
