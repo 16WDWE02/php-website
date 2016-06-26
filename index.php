@@ -35,7 +35,8 @@ switch($page) {
 
 	// Login page
 	case 'login':
-		echo $plates->render('login');
+		require 'app/controllers/LoginController.php';
+		$controller = new LoginController($dbc);
 	break;
 
 	// Stream page
