@@ -36,7 +36,11 @@
 
       <?php foreach($allPosts as $item): ?>
       <article class="grid-item">
-        <img src="<?= $item['image'] ?>" alt="">
+        
+        <a href="index.php?page=post&postid=<?= $item['id'] ?>">
+          <img src="<?= $item['image'] ?>" alt="">
+        </a>
+
         <div class="grid-content">
           <a href="" class="button alert save"><i class="fa fa-thumb-tack" aria-hidden="true"></i> Save</a>
           <a href="" class="button secondary heart"><i class="fa fa-heart" aria-hidden="true"></i></a>
