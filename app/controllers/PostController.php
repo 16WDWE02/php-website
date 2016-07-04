@@ -24,9 +24,11 @@ class PostController extends PageController {
 		$postID = $this->dbc->real_escape_string( $_GET['postid'] );
 
 		// Get info about this post
-		$sql = "SELECT title, description, image, created_at, updated_at
+		$sql = "SELECT title, description, image, created_at, updated_at, first_name, last_name
 				FROM posts
-				WHERE id = $postID";
+				JOIN users
+				ON user_id = users.id
+				WHERE posts.id = $postID";
 
 		// Run the SQL
 		$result = $this->dbc->query($sql);
@@ -38,6 +40,17 @@ class PostController extends PageController {
 		} else {
 			// Yay!
 			$this->data['post'] = $result->fetch_assoc();
+
+			// If the user does not have a name
+			$fName = $this->data['post']['first_name'];
+			$lName = $this->data['post']['last_name'];
+
+			if( !$fName && !$lName ) {
+				// Anon
+				$this->data['post']['first_name'] = 'Anon';
+			}
+
+			
 		}
 
 	}
