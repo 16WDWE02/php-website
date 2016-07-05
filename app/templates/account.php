@@ -50,8 +50,8 @@
 
 	<div>
 		<label for="image">Image: </label>
-		<input type="file" name="image[]" id="image" multiple>
-		<?=  isset($fileMessage) ? $fileMessage : '' ?>
+		<input type="file" name="image" id="image">
+		<?=  isset($imageMessage) ? $imageMessage : '' ?>
 	</div>
 
 	<input type="submit" name="new-post" value="Submit">
