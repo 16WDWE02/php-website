@@ -12,6 +12,11 @@ class EditPostController extends PageController {
 
 		$this->mustBeLoggedIn();
 
+		// Did the user submit the edit form?
+		if( isset($_POST['edit-post']) ) {
+			$this->processPostEdit();
+		}
+
 		// Get info about the post
 		$this->getPostInfo();
 
@@ -47,10 +52,78 @@ class EditPostController extends PageController {
 			// OR the post was deleted
 			header("Location: index.php?page=post&postid=$postID");
 		} else {
-			$this->data['post'] = $result->fetch_assoc();
+
+			// WAIT!
+			// What if the user has submitted the form?
+			// We don't want to lose their changes
+			if( isset($_POST['edit-post']) ) {
+				// USE THE FORM DATA!!!
+				$this->data['post'] = $_POST;
+
+				// Use the original title
+				$result = $result->fetch_assoc();
+				$this->data['originalTitle'] = $result['title'];
+
+
+			} else {
+				// Use the database data
+				$result = $result->fetch_assoc();
+				
+				$this->data['post'] = $result;
+
+				$this->data['originalTitle'] = $result['title'];
+			}
+
+			
 		}
 
 
+
+	}
+
+	private function processPostEdit() {
+
+		// Validation
+		$totalErrors = 0;
+
+		// Make life easier
+		$title = $_POST['title'];
+		$desc = $_POST['description'];
+
+		// Title
+		if( strlen($title) > 100 ) {
+			$totalErrors++;
+			$this->data['titleError'] = 'At most 100';
+		}
+
+		// Description
+		if( strlen($desc) > 1000 ) {
+			$totalErrors++;
+			$this->data['descError'] = 'At most 1000';
+		}
+
+		// If there are no errors
+		if( $totalErrors == 0 ) {
+
+			// Filter the data
+			$title  = $this->dbc->real_escape_string($title);
+			$desc   = $this->dbc->real_escape_string($desc);
+			$postID = $this->dbc->real_escape_string($_GET['id']);
+			$userID = $_SESSION['id'];
+
+			// Prepare the SQL
+			$sql = "UPDATE posts
+					SET title = '$title',
+						description = '$desc'
+					WHERE id = $postID
+					AND user_id = $userID";
+
+			$this->dbc->query($sql);
+
+			// Redirect the user to the post page
+			header("Location: index.php?page=post&postid=$postID");
+
+		}
 
 	}
 
