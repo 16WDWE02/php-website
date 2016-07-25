@@ -9,16 +9,16 @@
 
 <body>
 
-<h1><?= $post['title'] ?></h1>
+<h1><?= $this->e($post['title']) ?></h1>
 
-<p><?= $post['description'] ?></p>
+<p><?= $this->e($post['description']) ?></p>
 
 <img src="img/uploads/original/<?= $post['image'] ?>" alt="">
 
 <ul>
 	<li>Post created: <?= $post['created_at'] ?></li>
 	<li>Post last updated: <?= $post['updated_at'] ?></li>
-	<li>Posted by: <?= $post['first_name'].' '.$post['last_name']   ?></li>
+	<li>Posted by: <?= $this->e($post['first_name'].' '.$post['last_name'])   ?></li>
 </ul>
 
 <section>
@@ -49,7 +49,7 @@
 
 					// Yes! This user owns the comment!
 					echo 'Delete';
-					echo 'Edit';
+					echo '<a href="index.php?page=edit-comment&id='.$comment['id'].'">Edit</a>';
 
 				}
 

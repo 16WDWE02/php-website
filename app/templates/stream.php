@@ -47,7 +47,7 @@
 
           <h1>
             <a href="index.php?page=post&postid=<?= $item['id'] ?>">
-            <?= $item['title'] ?>
+            <?= htmlentities($item['title']) ?>
             </a>
           </h1>
 

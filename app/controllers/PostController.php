@@ -63,7 +63,7 @@ class PostController extends PageController {
 		}
 
 		// Get all the comments!
-		$sql = "SELECT user_id, comment, CONCAT(first_name, ' ', last_name) AS author
+		$sql = "SELECT comments.id, user_id, comment, CONCAT(first_name, ' ', last_name) AS author
 				FROM comments
 				JOIN users
 				ON comments.user_id = users.id
