@@ -32,7 +32,7 @@ class PostController extends PageController {
 		$postID = $this->dbc->real_escape_string( $_GET['postid'] );
 
 		// Get info about this post
-		$sql = "SELECT title, description, image, created_at, updated_at, first_name, last_name
+		$sql = "SELECT title, description, image, created_at, updated_at, first_name, last_name, user_id
 				FROM posts
 				JOIN users
 				ON user_id = users.id
