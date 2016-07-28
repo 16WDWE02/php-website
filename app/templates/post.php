@@ -25,14 +25,17 @@
 
 		if( isset($_SESSION['id']) ) {
 
-			if( $_SESSION['id'] == $post['user_id'] ) {
+			if( $_SESSION['id'] == $post['user_id'] || $_SESSION['privilege'] == 'admin' ) {
 				// You own post!
 				?>
 	<li>
 		<a href="index.php?page=edit-post&id=<?= $_GET['postid'] ?>">Edit</a>
 	</li>
 	<li>
-		<a href="index.php?page=">Delete</a>
+		<button id="delete-post">Delete</button>
+		<div id="delete-post-options">
+			<a href="<?= $_SERVER['REQUEST_URI'] ?>&delete">Yes</a> / <button>No</button>
+		</div>
 	</li>
 				<?php
 			}
@@ -66,7 +69,7 @@
 			if( isset($_SESSION['id']) ) {
 
 				// Does this user own the comment?
-				if( $_SESSION['id'] == $comment['user_id'] ) {
+				if( $_SESSION['id'] == $comment['user_id'] || $_SESSION['privilege'] == 'admin' ) {
 
 					// Yes! This user owns the comment!
 					echo 'Delete';
@@ -86,6 +89,22 @@
 
 
 
+<script>
+	
 
+	// Wait for all the stuff to be ready
+	$(document).ready(function(){
+
+		// When the user clicks on the delete button
+		$('#delete-post, #delete-post-options button').click(function(){
+
+			// Toggle the visibility of the controls
+			$('#delete-post-options').toggle();
+
+		});
+
+	});
+
+</script>
 
 

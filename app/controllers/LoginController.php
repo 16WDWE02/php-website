@@ -55,7 +55,7 @@ class LoginController extends PageController {
 			$filteredEmail = $this->dbc->real_escape_string( $_POST['email'] );
 
 			// Prepare SQL
-			$sql = "SELECT id, password
+			$sql = "SELECT id, password, privilege
 					FROM users
 					WHERE email = '$filteredEmail'  ";
 
@@ -75,6 +75,7 @@ class LoginController extends PageController {
 				if( $passwordResult == true ) {
 					// Log the user in
 					$_SESSION['id'] = $userData['id'];
+					$_SESSION['privilege'] = $userData['privilege'];
 
 					header('Location: index.php?page=stream');
 

@@ -9,12 +9,13 @@
     <link rel="stylesheet" href="css/foundation.css">
     <link rel="stylesheet" href="css/app.css">
     <script src="https://use.fontawesome.com/c9a6fcc362.js"></script>
+    <script src="js/vendor/jquery.js"></script>
   </head>
 
   <?= $this->section('content') ?>
 
 
-  <script src="js/vendor/jquery.js"></script>
+  
     <script src="js/vendor/what-input.js"></script>
     <script src="js/vendor/foundation.js"></script>
     <script src="js/app.js"></script>
