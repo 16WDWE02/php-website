@@ -10,6 +10,8 @@
 
 <body>
 
+<?= $this->insert('nav') ?>
+
 <h1>Account</h1>
 
 <form action="index.php?page=account" method="post">

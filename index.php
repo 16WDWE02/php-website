@@ -65,6 +65,13 @@ switch($page) {
 		$controller = new EditPostController($dbc);
 	break;
 
+	case 'logout':
+		unset($_SESSION['id']);
+		unset($_SESSION['privilege']);
+		header('Location: index.php');
+		
+	break;
+
 	// 404
 	default:
 		require 'app/controllers/Error404Controller.php';

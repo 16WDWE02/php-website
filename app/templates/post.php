@@ -9,6 +9,8 @@
 
 <body>
 
+<?= $this->insert('nav') ?>
+
 <h1><?= $this->e($post['title']) ?></h1>
 
 <p><?= $this->e($post['description']) ?></p>

@@ -1,7 +1,10 @@
 <?php $this->layout('master'); ?>
 
-<h1>Edit post: <?= htmlentities($originalTitle) ?></h1>
+<body>
 
+<?= $this->insert('nav') ?>
+
+<h1>Edit post: <?= htmlentities($originalTitle) ?></h1>
 
 <form action="<?= $_SERVER['REQUEST_URI'] ?>" method="post" enctype="multipart/form-data">
 	

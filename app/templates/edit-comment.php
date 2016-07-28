@@ -1,5 +1,8 @@
 <?php $this->layout('master') ?>
 
+<body>
+
+<?= $this->insert('nav') ?>
 
 <h1>Edit your comment</h1>
 
