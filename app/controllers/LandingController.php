@@ -12,6 +12,8 @@ class LandingController extends PageController {
 		// Save the database connection for later
 		$this->dbc = $dbc;
 
+		$this->mustBeLoggedOut();
+
 		// If the user has submitted the registration form
 		if( isset($_POST['new-account']) ) {
 			$this->validateRegistrationForm();

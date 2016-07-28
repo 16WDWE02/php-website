@@ -65,8 +65,10 @@ switch($page) {
 		$controller = new EditPostController($dbc);
 	break;
 
+	// 404
 	default:
-		echo $plates->render('error404');
+		require 'app/controllers/Error404Controller.php';
+		$controller = new Error404Controller();
 	break;
 
 }

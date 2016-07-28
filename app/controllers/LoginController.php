@@ -7,6 +7,9 @@ class LoginController extends PageController {
 		// Make sure the PageControllers constructor still runs
 		parent::__construct();
 
+		// If the user is logged in then redirect them to their stream page
+		$this->mustBeLoggedOut();
+
 		// Save the database connection
 		$this->dbc = $dbc;
 
